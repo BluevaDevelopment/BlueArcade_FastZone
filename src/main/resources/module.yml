@@ -1,0 +1,12 @@
+name: Fast Zone
+id: fast_zone
+version: 1.0.0
+type: MICROGAME
+api-version: 1.0
+main: net.blueva.arcade.modules.fastzone.FastZoneModule
+
+authors:
+  - Blueva
+  - Whiron
+
+description: "Dash through the lane at blistering speed and avoid crashing into walls."
