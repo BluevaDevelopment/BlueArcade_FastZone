@@ -83,6 +83,11 @@ public class FastZoneMessagingService {
     }
 
     public void broadcastDeathMessage(GameContext<Player, Location, World, Material, ItemStack, Sound, Block, Entity> context, Player player, String message) {
+        // Don't broadcast death messages for spectators
+        if (context.getSpectators().contains(player)) {
+            return;
+        }
+
         if (message == null) {
             return;
         }

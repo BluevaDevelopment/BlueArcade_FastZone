@@ -376,6 +376,11 @@ public class FastZoneGameManager {
     }
 
     public void handlePlayerDeath(GameContext<Player, Location, World, Material, ItemStack, Sound, Block, Entity> context, Player player, FastZoneDeathReason reason) {
+        // Don't broadcast death messages for spectators
+        if (context.getSpectators().contains(player)) {
+            return;
+        }
+
         messagingService.broadcastDeathMessage(context, player, getRandomMessage(reason.getMessagePath()));
     }
 

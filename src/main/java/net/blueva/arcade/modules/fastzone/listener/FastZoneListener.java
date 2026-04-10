@@ -65,11 +65,11 @@ public class FastZoneListener implements Listener {
             return;
         }
 
-        Location blockBelow = to.clone().subtract(0, 1, 0);
-        Material blockBelowType = blockBelow.getBlock().getType();
+        Location blockAtHead = to.clone().add(0, player.getEyeHeight(), 0);
+        Material blockAtHeadType = blockAtHead.getBlock().getType();
 
         Material deathBlock = gameManager.getDeathBlock(context);
-        if (blockBelowType == deathBlock) {
+        if (blockAtHeadType == deathBlock) {
             Location deathLocation = player.getLocation();
             context.respawnPlayer(player);
 
@@ -119,7 +119,8 @@ public class FastZoneListener implements Listener {
             return true;
         }
 
-        return isBlocking(target.getBlock()) || isBlocking(target.clone().add(0, player.getEyeHeight(), 0).getBlock());
+        // Only check head height, ignore feet to allow carpets and flowers
+        return isBlocking(target.clone().add(0, player.getEyeHeight(), 0).getBlock());
     }
 
     private boolean isBlocking(Block block) {

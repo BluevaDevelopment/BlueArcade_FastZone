@@ -24,6 +24,11 @@ vote_menu:
     - "<white>{votes}</white> <gray>votes.</gray>"
 
 stats:
+
+  descriptions:
+    wins: "Fast Zone wins"
+    games_played: "Fast Zone games played"
+    finish_line_crosses: "Times you reached the fast zone finish line"
   labels:
     finish_line_crosses: "Zone finishes"
     games_played: "Fast Zone games played"

@@ -58,7 +58,7 @@ public class FastZoneModule implements GameModule<Player, Location, World, Mater
         moduleConfig.register("language.yml", 1);
         moduleConfig.register("achievements.yml", 1);
 
-        FastZoneStatsService statsService = new FastZoneStatsService(statsAPI, moduleInfo);
+        FastZoneStatsService statsService = new FastZoneStatsService(statsAPI, moduleInfo, moduleConfig);
         statsService.registerStats();
 
         FastZoneHazardService hazardService = new FastZoneHazardService(moduleConfig);
