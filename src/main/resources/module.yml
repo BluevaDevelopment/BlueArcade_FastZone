@@ -2,7 +2,7 @@ name: Fast Zone
 id: fast_zone
 version: ${revision}
 type: MICROGAME
-api-version: 3.3
+api-version: 3.4
 main: net.blueva.arcade.modules.fastzone.FastZoneModule
 
 authors:

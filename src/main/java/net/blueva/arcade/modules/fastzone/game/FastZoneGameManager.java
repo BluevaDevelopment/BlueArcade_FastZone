@@ -122,9 +122,9 @@ public class FastZoneGameManager {
                 return;
             }
 
-            String actionBarTemplate = coreConfig.getLanguage("action_bar.in_game.global");
-
             for (Player player : allPlayers) {
+
+                String actionBarTemplate = coreConfig.getLanguage(player, "action_bar.in_game.global");
                 if (!player.isOnline()) {
                     continue;
                 }
@@ -133,7 +133,7 @@ public class FastZoneGameManager {
                 context.getMessagesAPI().sendActionBar(player, actionBarMessage);
 
                 Map<String, String> customPlaceholders = getCustomPlaceholders(player);
-                customPlaceholders.put("time", String.valueOf(timeLeft[0]));
+                customPlaceholders.put("time", formatCountdownTime(timeLeft[0]));
                 customPlaceholders.put("round", String.valueOf(context.getCurrentRound()));
                 customPlaceholders.put("round_max", String.valueOf(context.getMaxRounds()));
 
@@ -190,7 +190,7 @@ public class FastZoneGameManager {
         }
 
         return template
-                .replace("{time}", String.valueOf(timeLeft))
+                .replace("{time}", formatCountdownTime(timeLeft))
                 .replace("{round}", String.valueOf(context.getCurrentRound()))
                 .replace("{round_max}", String.valueOf(context.getMaxRounds()));
     }
@@ -406,7 +406,7 @@ public class FastZoneGameManager {
     }
 
     private String getRandomMessage(String path) {
-        List<String> messages = moduleConfig.getStringListFrom("language.yml", path);
+        List<String> messages = moduleConfig.getTranslationList(null, path);
         if (messages == null || messages.isEmpty()) {
             return null;
         }
@@ -460,4 +460,10 @@ public class FastZoneGameManager {
     public ModuleConfigAPI getModuleConfig() {
         return moduleConfig;
     }
+
+    private static String formatCountdownTime(int seconds) {
+        int safeSeconds = Math.max(0, seconds);
+        return String.format("%02d:%02d", safeSeconds / 60, safeSeconds % 60);
+    }
+
 }

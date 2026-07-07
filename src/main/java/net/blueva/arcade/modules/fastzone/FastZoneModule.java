@@ -30,6 +30,11 @@ import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.Map;
+import net.blueva.arcade.api.setup.ModuleSetupCommand;
+import net.blueva.arcade.api.setup.ModuleSetupMetadata;
+import net.blueva.arcade.api.setup.ModuleSetupStep;
+import net.blueva.arcade.api.setup.ModuleSetupStatusCheck;
+import java.util.List;
 
 public class FastZoneModule implements GameModule<Player, Location, World, Material, ItemStack, Sound, Block, Entity, Listener, EventPriority> {
 
@@ -55,8 +60,7 @@ public class FastZoneModule implements GameModule<Player, Location, World, Mater
         VoteMenuAPI voteMenu = ModuleAPI.getVoteMenuAPI();
         AchievementsAPI achievementsAPI = ModuleAPI.getAchievementsAPI();
 
-        moduleConfig.register("language.yml", 1);
-        moduleConfig.register("achievements.yml", 1);
+        moduleConfig.register("achievements.yml");
 
         FastZoneStatsService statsService = new FastZoneStatsService(statsAPI, moduleInfo, moduleConfig);
         statsService.registerStats();
@@ -87,8 +91,8 @@ public class FastZoneModule implements GameModule<Player, Location, World, Mater
             voteMenu.registerGame(
                     moduleInfo.getId(),
                     Material.valueOf(moduleConfig.getString("menus.vote.item")),
-                    moduleConfig.getStringFrom("language.yml", "vote_menu.name"),
-                    moduleConfig.getStringListFrom("language.yml", "vote_menu.lore")
+                    moduleConfig.getTranslation(null, "vote_menu.name"),
+                    moduleConfig.getTranslationList(null, "vote_menu.lore")
             );
         }
     }
@@ -139,4 +143,32 @@ public class FastZoneModule implements GameModule<Player, Location, World, Mater
     public Map<String, String> getCustomPlaceholders(Player player) {
         return gameManager.getCustomPlaceholders(player);
     }
+
+    @Override
+    public ModuleSetupMetadata getSetupMetadata() {
+        return new ModuleSetupMetadata() {
+
+            @Override
+            public List<ModuleSetupStep> getSetupSteps() {
+                return List.of(
+                        new ModuleSetupStep("finishline", true, "Configure Finishline", "Configure the module-specific finishline setup data.", List.of("/baa game <arena> fast_zone finishline"), "selection region")
+                );
+            }
+
+            @Override
+            public List<ModuleSetupCommand> getSetupCommands() {
+                return List.of(
+                        new ModuleSetupCommand("finishline", "/baa game <arena> fast_zone finishline", "Configure finishline setup data.", true)
+                );
+            }
+
+            @Override
+            public List<ModuleSetupStatusCheck<?, ?, ?>> getStatusChecks() {
+                return List.of(
+                        new ModuleSetupStatusCheck<>("finishline", true, "Select the finish line region.", context -> context.getData().has("game.finish_line.bounds.min.x") && context.getData().has("game.finish_line.bounds.max.x"))
+                );
+            }
+        };
+    }
+
 }

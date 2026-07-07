@@ -12,7 +12,9 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
@@ -27,6 +29,26 @@ public class FastZoneListener implements Listener {
         this.gameManager = gameManager;
     }
 
+    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    public void onPlayerFallDamage(EntityDamageEvent event) {
+        if (event.getCause() != EntityDamageEvent.DamageCause.FALL) {
+            return;
+        }
+
+        if (!(event.getEntity() instanceof Player player)) {
+            return;
+        }
+
+        GameContext<Player, Location, World, Material, ItemStack, Sound, Block, Entity> context = gameManager.getGameContext(player);
+        if (context == null) {
+            return;
+        }
+
+        if (context.isPlayerPlaying(player)) {
+            event.setCancelled(true);
+        }
+    }
+
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event) {
         Player player = event.getPlayer();
@@ -38,7 +60,7 @@ public class FastZoneListener implements Listener {
             return;
         }
 
-        if (!context.isPlayerPlaying(player) || context.getSpectators().contains(player) || player.getGameMode() == org.bukkit.GameMode.SPECTATOR) {
+        if (!context.isPlayerPlaying(player) || context.getSpectators().contains(player) || context.isPlayerSpectating(player)) {
             return;
         }
 
@@ -95,8 +117,8 @@ public class FastZoneListener implements Listener {
                 gameManager.handlePlayerFinish(player);
                 gameManager.broadcastFinish(context, player, position);
 
-                String title = gameManager.getModuleConfig().getStringFrom("language.yml", "titles.finished.title");
-                String subtitle = gameManager.getModuleConfig().getStringFrom("language.yml", "titles.finished.subtitle")
+                String title = gameManager.getModuleConfig().getTranslation(player, "titles.finished.title");
+                String subtitle = gameManager.getModuleConfig().getTranslation(player, "titles.finished.subtitle")
                         .replace("{position}", String.valueOf(position));
 
                 context.getTitlesAPI().sendRaw(player, title, subtitle, 0, 80, 20);

@@ -1,10 +1,17 @@
-file_version: 1
+#  ____  _               _                      _
+# | __ )| |_   _  ___   / \   _ __ ___ __ _  __| | ___
+# |  _ \| | | | |/ _ \ / _ \ | '__/ __/ _` |/ _` |/ _ \
+# | |_) | | |_| |  __// ___ \| | | (_| (_| | (_| |  __/
+# |____/|_|\__,_|\___/_/   \_|_|  \___\__,_|\__,_|\___|
+#
+# [!] Arcade by Blueva | https://blueva.net/store/blue-arcade [!]
+
 category:
-  id: fast_zone
+  id: "fast_zone"
   name: "Fast Zone"
   description:
     - "Achievements tied to Fast Zone."
-  icon: ICE
+  icon: "ICE"
   sort_order: 20
 
 achievements:
@@ -12,7 +19,7 @@ achievements:
     name: "Speed Sprinter"
     description:
       - "Keep queueing into Fast Zone."
-    icon: ICE
+    icon: "ICE"
     phases:
       1:
         name: "First dash"
@@ -26,7 +33,7 @@ achievements:
             - "arcadeadmin xp give {player} 10"
           messages:
             - "  <gold>⛁</gold> <yellow>+10 credits</yellow>"
-            - "  <purple>✹</purple> <light_purple>+10 XP</light_purple>"
+            - "  <dark_purple>✹</dark_purple> <light_purple>+10 XP</light_purple>"
       2:
         name: "Warmed up"
         description:
@@ -39,7 +46,7 @@ achievements:
             - "arcadeadmin xp give {player} 25"
           messages:
             - "  <gold>⛁</gold> <yellow>+25 credits</yellow>"
-            - "  <purple>✹</purple> <light_purple>+25 XP</light_purple>"
+            - "  <dark_purple>✹</dark_purple> <light_purple>+25 XP</light_purple>"
       3:
         name: "Lane regular"
         description:
@@ -52,7 +59,7 @@ achievements:
             - "arcadeadmin xp give {player} 40"
           messages:
             - "  <gold>⛁</gold> <yellow>+40 credits</yellow>"
-            - "  <purple>✹</purple> <light_purple>+40 XP</light_purple>"
+            - "  <dark_purple>✹</dark_purple> <light_purple>+40 XP</light_purple>"
       4:
         name: "Fast lane fan"
         description:
@@ -65,7 +72,7 @@ achievements:
             - "arcadeadmin xp give {player} 60"
           messages:
             - "  <gold>⛁</gold> <yellow>+60 credits</yellow>"
-            - "  <purple>✹</purple> <light_purple>+60 XP</light_purple>"
+            - "  <dark_purple>✹</dark_purple> <light_purple>+60 XP</light_purple>"
       5:
         name: "Speed devotee"
         description:
@@ -78,13 +85,13 @@ achievements:
             - "arcadeadmin xp give {player} 90"
           messages:
             - "  <gold>⛁</gold> <yellow>+90 credits</yellow>"
-            - "  <purple>✹</purple> <light_purple>+90 XP</light_purple>"
+            - "  <dark_purple>✹</dark_purple> <light_purple>+90 XP</light_purple>"
 
   line_breaker:
     name: "Line Breaker"
     description:
       - "Cross the finish at full throttle."
-    icon: GOLD_BLOCK
+    icon: "GOLD_BLOCK"
     phases:
       1:
         name: "First burst"
@@ -98,7 +105,7 @@ achievements:
             - "arcadeadmin xp give {player} 20"
           messages:
             - "  <gold>⛁</gold> <yellow>+20 credits</yellow>"
-            - "  <purple>✹</purple> <light_purple>+20 XP</light_purple>"
+            - "  <dark_purple>✹</dark_purple> <light_purple>+20 XP</light_purple>"
       2:
         name: "Fast finisher"
         description:
@@ -111,7 +118,7 @@ achievements:
             - "arcadeadmin xp give {player} 40"
           messages:
             - "  <gold>⛁</gold> <yellow>+40 credits</yellow>"
-            - "  <purple>✹</purple> <light_purple>+40 XP</light_purple>"
+            - "  <dark_purple>✹</dark_purple> <light_purple>+40 XP</light_purple>"
       3:
         name: "Lane finisher"
         description:
@@ -124,7 +131,7 @@ achievements:
             - "arcadeadmin xp give {player} 60"
           messages:
             - "  <gold>⛁</gold> <yellow>+60 credits</yellow>"
-            - "  <purple>✹</purple> <light_purple>+60 XP</light_purple>"
+            - "  <dark_purple>✹</dark_purple> <light_purple>+60 XP</light_purple>"
       4:
         name: "Sprint closer"
         description:
@@ -137,7 +144,7 @@ achievements:
             - "arcadeadmin xp give {player} 80"
           messages:
             - "  <gold>⛁</gold> <yellow>+80 credits</yellow>"
-            - "  <purple>✹</purple> <light_purple>+80 XP</light_purple>"
+            - "  <dark_purple>✹</dark_purple> <light_purple>+80 XP</light_purple>"
       5:
         name: "Zone streaker"
         description:
@@ -150,13 +157,13 @@ achievements:
             - "arcadeadmin xp give {player} 120"
           messages:
             - "  <gold>⛁</gold> <yellow>+120 credits</yellow>"
-            - "  <purple>✹</purple> <light_purple>+120 XP</light_purple>"
+            - "  <dark_purple>✹</dark_purple> <light_purple>+120 XP</light_purple>"
 
   velocity_victor:
     name: "Velocity Victor"
     description:
       - "Collect Fast Zone wins."
-    icon: DIAMOND_BLOCK
+    icon: "DIAMOND_BLOCK"
     phases:
       1:
         name: "First win"
@@ -170,7 +177,7 @@ achievements:
             - "arcadeadmin xp give {player} 25"
           messages:
             - "  <gold>⛁</gold> <yellow>+25 credits</yellow>"
-            - "  <purple>✹</purple> <light_purple>+25 XP</light_purple>"
+            - "  <dark_purple>✹</dark_purple> <light_purple>+25 XP</light_purple>"
       2:
         name: "Zone conqueror"
         description:
@@ -183,7 +190,7 @@ achievements:
             - "arcadeadmin xp give {player} 50"
           messages:
             - "  <gold>⛁</gold> <yellow>+50 credits</yellow>"
-            - "  <purple>✹</purple> <light_purple>+50 XP</light_purple>"
+            - "  <dark_purple>✹</dark_purple> <light_purple>+50 XP</light_purple>"
       3:
         name: "Speed champion"
         description:
@@ -196,7 +203,7 @@ achievements:
             - "arcadeadmin xp give {player} 70"
           messages:
             - "  <gold>⛁</gold> <yellow>+70 credits</yellow>"
-            - "  <purple>✹</purple> <light_purple>+70 XP</light_purple>"
+            - "  <dark_purple>✹</dark_purple> <light_purple>+70 XP</light_purple>"
       4:
         name: "Lane ruler"
         description:
@@ -209,7 +216,7 @@ achievements:
             - "arcadeadmin xp give {player} 100"
           messages:
             - "  <gold>⛁</gold> <yellow>+100 credits</yellow>"
-            - "  <purple>✹</purple> <light_purple>+100 XP</light_purple>"
+            - "  <dark_purple>✹</dark_purple> <light_purple>+100 XP</light_purple>"
       5:
         name: "Fast Zone legend"
         description:
@@ -222,13 +229,13 @@ achievements:
             - "arcadeadmin xp give {player} 150"
           messages:
             - "  <gold>⛁</gold> <yellow>+150 credits</yellow>"
-            - "  <purple>✹</purple> <light_purple>+150 XP</light_purple>"
+            - "  <dark_purple>✹</dark_purple> <light_purple>+150 XP</light_purple>"
 
   wall_dodger:
     name: "Wall Dodger"
     description:
       - "Keep racing and avoid crashes."
-    icon: REDSTONE_BLOCK
+    icon: "REDSTONE_BLOCK"
     phases:
       1:
         name: "Quick reflexes"
@@ -242,7 +249,7 @@ achievements:
             - "arcadeadmin xp give {player} 35"
           messages:
             - "  <gold>⛁</gold> <yellow>+35 credits</yellow>"
-            - "  <purple>✹</purple> <light_purple>+35 XP</light_purple>"
+            - "  <dark_purple>✹</dark_purple> <light_purple>+35 XP</light_purple>"
       2:
         name: "Wall reader"
         description:
@@ -255,7 +262,7 @@ achievements:
             - "arcadeadmin xp give {player} 70"
           messages:
             - "  <gold>⛁</gold> <yellow>+70 credits</yellow>"
-            - "  <purple>✹</purple> <light_purple>+70 XP</light_purple>"
+            - "  <dark_purple>✹</dark_purple> <light_purple>+70 XP</light_purple>"
       3:
         name: "Wall juker"
         description:
@@ -268,7 +275,7 @@ achievements:
             - "arcadeadmin xp give {player} 100"
           messages:
             - "  <gold>⛁</gold> <yellow>+100 credits</yellow>"
-            - "  <purple>✹</purple> <light_purple>+100 XP</light_purple>"
+            - "  <dark_purple>✹</dark_purple> <light_purple>+100 XP</light_purple>"
       4:
         name: "Crashless"
         description:
@@ -281,7 +288,7 @@ achievements:
             - "arcadeadmin xp give {player} 140"
           messages:
             - "  <gold>⛁</gold> <yellow>+140 credits</yellow>"
-            - "  <purple>✹</purple> <light_purple>+140 XP</light_purple>"
+            - "  <dark_purple>✹</dark_purple> <light_purple>+140 XP</light_purple>"
       5:
         name: "Wallproof"
         description:
@@ -294,4 +301,4 @@ achievements:
             - "arcadeadmin xp give {player} 200"
           messages:
             - "  <gold>⛁</gold> <yellow>+200 credits</yellow>"
-            - "  <purple>✹</purple> <light_purple>+200 XP</light_purple>"
+            - "  <dark_purple>✹</dark_purple> <light_purple>+200 XP</light_purple>"
